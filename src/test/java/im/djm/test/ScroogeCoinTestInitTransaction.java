@@ -1,5 +1,6 @@
 package im.djm.test;
 
+import java.security.InvalidKeyException;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
@@ -7,9 +8,8 @@ import java.security.NoSuchProviderException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.SecureRandom;
-import java.security.Security;
+import java.security.SignatureException;
 
-import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,8 +25,6 @@ public class ScroogeCoinTestInitTransaction {
 
 	@Before
 	public void init() throws NoSuchAlgorithmException, NoSuchProviderException {
-		Security.addProvider(new BouncyCastleProvider());
-
 		this.keyGenerator = KeyPairGenerator.getInstance("RSA");
 		this.random = SecureRandom.getInstance("SHA1PRNG", "SUN");
 		this.keyGenerator.initialize(1024, this.random);
@@ -38,6 +36,7 @@ public class ScroogeCoinTestInitTransaction {
 
 	@Test
 	public void test01() {
+
 	}
 
 }
